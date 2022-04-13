@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using dotmockator.core.definitions;
 using dotmockator.core.definitions.builder;
-using dotmockator.core.generator.address;
 using dotmockator.core.test.testdata.address;
 using dotmockator.core.test.testdata.person;
 
