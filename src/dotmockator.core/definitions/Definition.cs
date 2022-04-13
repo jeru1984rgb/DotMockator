@@ -1,7 +1,16 @@
+using dotmockator.core.generator;
+
 namespace dotmockator.core.definitions;
 
 public class Definition
 {
+    public Type DefinitionType { get; }
+
+    public Definition(Type definitionType)
+    {
+        DefinitionType = definitionType;
+    }
+
     public IEnumerable<DefinitionField> Fields { get; } = new List<DefinitionField>();
 
     private List<DefinitionField> GetFieldList()
@@ -13,4 +22,5 @@ public class Definition
     {
         GetFieldList().Add(definitionField);
     }
+    
 }

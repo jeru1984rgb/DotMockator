@@ -4,17 +4,20 @@ namespace dotmockator.core.generator;
 
 public class FieldGenerator : IGenerator
 {
-    private readonly Func<object> _generator;
-    public FieldFunctionEnum FunctionEnum { get; }
+    private readonly Func<DefinitionField, object> _generator;
 
-    public FieldGenerator(Func<object> generator, FieldFunctionEnum fieldFunctionEnum)
+    public FieldGenerator(Func<DefinitionField, object> generator)
     {
         _generator = generator;
-        FunctionEnum = fieldFunctionEnum;
     }
 
     public object Generate()
     {
-        return _generator.Invoke();
+        return _generator.Invoke(DefinitionField.EmptyDefinitionField);
+    }
+    
+    public object Generate(DefinitionField df)
+    {
+        return _generator.Invoke(df);
     }
 }

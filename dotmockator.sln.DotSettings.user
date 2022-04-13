@@ -1,6 +1,14 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=31761302_002D7801_002D4233_002D8ba3_002Dfa92861ededd/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Session" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;Or&gt;
+    &lt;Project Location="/home/stefan/Schreibtisch/staydigital/dotmockator/test/dotmockator.core.test" Presentation="&amp;lt;dotmockator.core.test&amp;gt;" /&gt;
+    &lt;TestAncestor&gt;
+      &lt;TestId&gt;xUnit::A101FA41-53E5-41E4-86CF-4989336F9B98::net6.0::dotmockator.transport.file.test.writers.DotMockatorJsonFileTest.WriteJson_ToFile&lt;/TestId&gt;
+    &lt;/TestAncestor&gt;
+  &lt;/Or&gt;
+&lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=fc7b7352_002D1e97_002D478b_002D8a57_002D454d31c130ff/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="DefinitionExtractor_SimpleDefinition_GotAllDefinitions" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;Project Location="/home/stefan/Schreibtisch/staydigital/dotmockator/test/dotmockator.core.test" Presentation="&amp;lt;dotmockator.core.test&amp;gt;" /&gt;
+  &lt;Solution /&gt;
 &lt;/SessionState&gt;</s:String>
 	<s:Boolean x:Key="/Default/UserDictionary/Words/=dotmockator/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/UserDictionary/Words/=Mockator/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>
