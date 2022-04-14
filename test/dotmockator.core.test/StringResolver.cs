@@ -1,6 +1,6 @@
-using dotmockator.core.generator;
+using DotMockator.Core.Generator;
 
-namespace dotmockator.core.test;
+namespace DotMockator.Core.Test;
 
 public class StringResolver : IDynamicFieldResolver
 {

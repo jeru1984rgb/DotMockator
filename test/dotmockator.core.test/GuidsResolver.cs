@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using dotmockator.core.generator;
+using DotMockator.Core.Generator;
 
-namespace dotmockator.core.test;
+namespace DotMockator.Core.Test;
 
 public class GuidsResolver : IRandomFieldResolver
 {
