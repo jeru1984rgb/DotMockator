@@ -21,8 +21,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\dotmockator.transport.file\dotmockator.transport.file.csproj" />
-      <ProjectReference Include="..\test\dotmockator.core.test\dotmockator.core.test.csproj" />
+      <ProjectReference Include="..\..\src\dotmockator.transport.file\dotmockator.transport.file.csproj" />
+      <ProjectReference Include="..\dotmockator.core.test\dotmockator.core.test.csproj" />
     </ItemGroup>
 
 </Project>

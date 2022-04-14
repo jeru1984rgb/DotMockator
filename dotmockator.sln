@@ -4,9 +4,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotmockator.core.test", "te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotmockator.core", "src\dotmockator.core\dotmockator.core.csproj", "{F3EA155D-F08B-4E2E-90CD-5A3618B86730}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotmockator.transport.file", "dotmockator.transport.file\dotmockator.transport.file.csproj", "{3E8F0EA2-C7E0-45A6-BCF3-227CC93B7D38}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7A10F705-E92F-4EC7-898D-8150F3C37ED3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotmockator.transport.file.test", "dotmockator.transport.file.test\dotmockator.transport.file.test.csproj", "{A101FA41-53E5-41E4-86CF-4989336F9B98}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{B566D9F7-FD68-44A0-9955-D16BF165DFD9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotmockator.transport.file", "src\dotmockator.transport.file\dotmockator.transport.file.csproj", "{F91B8F9D-B159-47AE-9E00-A285444F6FAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotmockator.transport.file.test", "test\dotmockator.transport.file.test\dotmockator.transport.file.test.csproj", "{8B3CDB8A-61B1-49A1-911C-826887DB6103}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,18 +21,19 @@ Global
 		{06A28026-0236-4D4E-A827-611167622A42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{06A28026-0236-4D4E-A827-611167622A42}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06A28026-0236-4D4E-A827-611167622A42}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{06A28026-0236-4D4E-A827-611167622A42}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F3EA155D-F08B-4E2E-90CD-5A3618B86730}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F3EA155D-F08B-4E2E-90CD-5A3618B86730}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F3EA155D-F08B-4E2E-90CD-5A3618B86730}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F3EA155D-F08B-4E2E-90CD-5A3618B86730}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3E8F0EA2-C7E0-45A6-BCF3-227CC93B7D38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3E8F0EA2-C7E0-45A6-BCF3-227CC93B7D38}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3E8F0EA2-C7E0-45A6-BCF3-227CC93B7D38}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3E8F0EA2-C7E0-45A6-BCF3-227CC93B7D38}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A101FA41-53E5-41E4-86CF-4989336F9B98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A101FA41-53E5-41E4-86CF-4989336F9B98}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A101FA41-53E5-41E4-86CF-4989336F9B98}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A101FA41-53E5-41E4-86CF-4989336F9B98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06A28026-0236-4D4E-A827-611167622A42}.Release|Any CPU.Build.0 = Release|Any CPU		
+		{F91B8F9D-B159-47AE-9E00-A285444F6FAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F91B8F9D-B159-47AE-9E00-A285444F6FAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F91B8F9D-B159-47AE-9E00-A285444F6FAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F91B8F9D-B159-47AE-9E00-A285444F6FAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B3CDB8A-61B1-49A1-911C-826887DB6103}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B3CDB8A-61B1-49A1-911C-826887DB6103}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B3CDB8A-61B1-49A1-911C-826887DB6103}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B3CDB8A-61B1-49A1-911C-826887DB6103}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution		
+		{06A28026-0236-4D4E-A827-611167622A42} = {B566D9F7-FD68-44A0-9955-D16BF165DFD9}
+		{F91B8F9D-B159-47AE-9E00-A285444F6FAD} = {7A10F705-E92F-4EC7-898D-8150F3C37ED3}
+		{8B3CDB8A-61B1-49A1-911C-826887DB6103} = {B566D9F7-FD68-44A0-9955-D16BF165DFD9}
 	EndGlobalSection
 EndGlobal
