@@ -1,4 +1,5 @@
 using System.Reflection;
+using dotmockator.core.definitions.attributes;
 
 namespace dotmockator.core.definitions;
 
@@ -14,7 +15,7 @@ public class DefinitionExtractor
         properties = properties.Concat(definitionClass.GetProperties().Where(IsMockatorField));
         foreach (var mockedProperty in properties)
         {
-            definition.AddField(new DefinitionField(mockedProperty));
+            definition.AddField(DefinitionFieldExtractor.Extract(mockedProperty));
         }
 
         return definition;

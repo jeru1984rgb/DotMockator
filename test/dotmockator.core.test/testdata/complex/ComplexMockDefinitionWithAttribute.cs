@@ -10,9 +10,9 @@ public class ComplexMockDefinitionWithAttribute : IComplexMockDefinition
 {
     [MockatorEmbedded]
     [MockatorImplementationType(typeof(PersonMockDefinitionWithAttribute))]
-    public IPersonMockDefinition Person { get; set; } = null!;
+    public IPersonMockDefinition? Person { get; set; }
 
     [MockatorGroup(1, 5)]
     [MockatorImplementationType(typeof(AddressMockDefinitionWithAttribute))]
-    public List<IAddressMockDefinition> Addresses { get; set; } = null!;
+    public List<IAddressMockDefinition>? Addresses { get; set; }
 }

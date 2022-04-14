@@ -10,18 +10,18 @@ public abstract class AbstractFileWriter<T>
 
     public IEnumerable<T> Mocks { get; }
     
-    public Definition Definition { get; private set; }
+    public Definition Definition { get; }
 
     public AbstractFileWriter(string file, string path)
     {
         File = file;
         Path = path;
         Mocks = new List<T>();
+        Definition = DefinitionExtractor.ExtractDefinition(typeof(T));
     }
 
     public async Task WriteToFile(int amount)
     {
-        Definition = DefinitionExtractor.ExtractDefinition(typeof(T));
         var mockObservable = MockatorGenerator.GenerateObservable<T>(amount, Definition);
         
         mockObservable.Subscribe(x => { ((List<T>) Mocks).Add(x); });

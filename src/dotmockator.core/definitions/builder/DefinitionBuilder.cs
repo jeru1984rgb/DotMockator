@@ -1,4 +1,5 @@
 using System.Reflection;
+using dotmockator.core.definitions.field;
 
 namespace dotmockator.core.definitions.builder;
 
@@ -7,6 +8,8 @@ public interface IDefinitionBuilder
     Definition Build();
 
     IDefinitionBuilder HavingField(string propertyName, Action<IDefinitionFieldBuilder> configure);
+    IDefinitionBuilder HavingGroup(string propertyName, Definition groupDefinition);
+    IDefinitionBuilder HavingGroup(string propertyName, Definition groupDefinition, int min, int max);
 }
 
 public interface IDefinitionFieldBuilder
@@ -15,7 +18,7 @@ public interface IDefinitionFieldBuilder
     IDefinitionFieldBuilder WithGenerator(Type generatorType);
     IDefinitionFieldBuilder WithResolver(Type resolverType);
     IDefinitionFieldBuilder WithStatic(Func<object> staticFunc);
-    IDefinitionFieldBuilder WithConfiguration(IConfiguration configuration);
+    IDefinitionFieldBuilder WithConfiguration(IMockatorConfiguration configuration);
 
     IDefinitionFieldBuilder AsGroup(int min, int max);
     IDefinitionFieldBuilder UseDefinition(Definition definition);
@@ -33,10 +36,11 @@ public class DefinitionFieldBuilder : IDefinitionFieldBuilder
     
     private Func<object>? _staticFunc;
     
-    private List<IConfiguration> _configurations = new ();
+    private List<IMockatorConfiguration> _configurations = new ();
 
     private int _min = 0;
     private int _max = 0;
+    private Boolean _isGroup = false;
     
     public DefinitionFieldBuilder(Type mockedType, string propertyName)
     {
@@ -45,7 +49,25 @@ public class DefinitionFieldBuilder : IDefinitionFieldBuilder
 
     public DefinitionField Build()
     {
-        return new DefinitionField(_propertyInfo, _generatorType, _resolverType, _staticFunc, _defintion, _configurations);
+        var field = new DefinitionField(_propertyInfo);
+        if (_generatorType != null)
+            field.WithGenerator(_generatorType);
+        if (_resolverType != null)
+            field.WithResolver(_resolverType);
+        if (_configurations.Any())
+            field.WithConfigurations(_configurations.ToArray());
+        if (_defintion != null)
+        {
+            field.WithEmbedded(_defintion.DefinitionType);
+            field.WithReuseDefinition(_defintion);
+        }
+        if (_isGroup)
+        {
+            field.WithGroup(_propertyInfo.PropertyType.GenericTypeArguments[0]);
+            field.WithConfigurations(new GroupMinMaxConfig(_min, _max));
+        }
+            
+        return field;
     }
 
     public IDefinitionFieldBuilder WithGenerator(Type generatorType)
@@ -65,8 +87,8 @@ public class DefinitionFieldBuilder : IDefinitionFieldBuilder
         _staticFunc = staticFunc;
         return this;
     }
-
-    public IDefinitionFieldBuilder WithConfiguration(IConfiguration configuration)
+    
+    public IDefinitionFieldBuilder WithConfiguration(IMockatorConfiguration configuration)
     {
         _configurations.Add(configuration);
         return this;
@@ -76,12 +98,14 @@ public class DefinitionFieldBuilder : IDefinitionFieldBuilder
     {
         _min = min;
         _max = max;
+        _isGroup = true;
         return this;
     }
 
     public IDefinitionFieldBuilder UseDefinition(Definition definition)
     {
         _defintion = definition;
+        
         return this;
     }
 }
@@ -99,6 +123,25 @@ public class DefinitionBuilder<T> : IDefinitionBuilder
         _definition.AddField(fieldBuilder.Build());
         return this;
     }
-    
+
+    public IDefinitionBuilder HavingGroup(string propertyName, Definition groupDefinition)
+    {
+        var fieldBuilder = new DefinitionFieldBuilder(typeof(T), propertyName);
+        fieldBuilder.UseDefinition(groupDefinition);
+        fieldBuilder.AsGroup(1, 1);
+        _definition.AddField(fieldBuilder.Build());
+        
+        return this;
+    }
+
+    public IDefinitionBuilder HavingGroup(string propertyName, Definition groupDefinition, int min, int max)
+    {
+        var fieldBuilder = new DefinitionFieldBuilder(typeof(T), propertyName);
+        fieldBuilder.UseDefinition(groupDefinition);
+        fieldBuilder.AsGroup(min, max);
+        _definition.AddField(fieldBuilder.Build());
+        
+        return this;
+    }
 }
 

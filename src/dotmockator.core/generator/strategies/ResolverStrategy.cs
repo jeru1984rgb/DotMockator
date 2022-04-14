@@ -1,26 +1,26 @@
-using dotmockator.core.definitions;
+using dotmockator.core.definitions.field;
 
 namespace dotmockator.core.generator.strategies;
 
-public class ResolverStrategy
+public static class ResolverStrategy
 {
     public static void HandleResolver<T>(T candidate, DefinitionField definitionField)
     {
-        if (!definitionField.IsResolver)
+        if (!definitionField.ResolverType.IsPresent && !definitionField.StaticFunc.IsPresent)
             return;
 
         object? resolvedValue = null;
 
-        if (definitionField.ResolverType != null)
+        if (definitionField.ResolverType.IsPresent)
         {
-            var resolver = (IDynamicFieldResolver) Activator.CreateInstance(definitionField.ResolverType)!;
+            var resolver = (IDynamicFieldResolver) Activator.CreateInstance(definitionField.ResolverType.Value)!;
             resolvedValue = resolver.ResolveValue();
         }
-        else if (definitionField.StaticFunc != null)
+        else if (definitionField.StaticFunc.IsPresent)
         {
-            resolvedValue = definitionField.StaticFunc.Invoke();
+            resolvedValue = definitionField.StaticFunc.Value.Invoke();
         }
 
-        definitionField.PropertyInfo.SetValue(candidate, resolvedValue);
+        definitionField.PropertyInfo.Value.SetValue(candidate, resolvedValue);
     }
 }

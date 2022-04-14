@@ -1,4 +1,4 @@
-using dotmockator.core.definitions;
+using dotmockator.core.definitions.field;
 
 namespace dotmockator.core.generator;
 

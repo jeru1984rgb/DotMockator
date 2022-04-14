@@ -1,4 +1,4 @@
-namespace dotmockator.core.definitions;
+namespace dotmockator.core.definitions.builder;
 
 public interface IBuilderAppendix
 {

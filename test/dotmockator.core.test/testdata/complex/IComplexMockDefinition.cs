@@ -6,7 +6,7 @@ namespace dotmockator.core.test.testdata.complex;
 
 public interface IComplexMockDefinition
 {
-    public IPersonMockDefinition Person { get; set; }
+    public IPersonMockDefinition? Person { get; set; }
     
-    public List<IAddressMockDefinition> Addresses { get; set; }
+    public List<IAddressMockDefinition>? Addresses { get; set; }
 }

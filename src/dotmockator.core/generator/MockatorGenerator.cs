@@ -26,7 +26,7 @@ public static class MockatorGenerator
         {
             for (int i = 0; i < amount; i++)
             {
-                observer.OnNext(GenerateSingle<T>(definition));
+                observer.OnNext((T) GenerateSingle(definition));
             }
 
             return Disposable.Empty;
@@ -50,11 +50,11 @@ public static class MockatorGenerator
         return (T) GenerateInternal(candidate!, definition);
     }
 
-    public static T GenerateSingle<T>(Definition definition)
+    public static object GenerateSingle(Definition definition)
     {
         var candidate = CreateCandidate(definition, definition.DefinitionType);
 
-        return (T) GenerateInternal(candidate!, definition);
+        return GenerateInternal(candidate!, definition);
     }
 
     private static object? CreateCandidate(Definition definition, Type candidateType)

@@ -6,8 +6,8 @@ namespace dotmockator.core.test.testdata.address;
 
 public class AddressMockDefinitionWithBuilder : IAddressMockDefinition
 {
-    public string City { get; set; }
-    public string Street { get; set; }
+    public string? City { get; set; }
+    public string? Street { get; set; }
     
     public static Definition GetBuilder()
     {
@@ -16,5 +16,4 @@ public class AddressMockDefinitionWithBuilder : IAddressMockDefinition
             .HavingField(nameof(Street), builder => builder.WithGenerator(typeof(AddressGenerator.StreetName)))
             .Build();
     }
-    
 }

@@ -1,3 +1,5 @@
+using dotmockator.core.definitions.builder;
+
 namespace dotmockator.core.definitions;
 
 public class GeneratorAppendix : IBuilderAppendix

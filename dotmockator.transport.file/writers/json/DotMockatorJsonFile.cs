@@ -4,7 +4,8 @@ namespace dotmockator.transport.file.writers.json;
 
 public class DotMockatorJsonFile<T> : AbstractFileWriter<T>
 {
-    public JsonSerializerSettings JsonSerializerSettings { get; private set; }
+    public JsonSerializerSettings JsonSerializerSettings { get; private set; } = new ();
+
     public DotMockatorJsonFile(string file, string path) : base(file, path)
     {
     }
@@ -13,15 +14,20 @@ public class DotMockatorJsonFile<T> : AbstractFileWriter<T>
     {
         var jsonConverters = new List<JsonConverter>();
 
-        foreach (var definitionField in Definition.Fields.Where(df => df.IsImplementation))
+        foreach (var definitionField in Definition.Fields.Where(df => df.ImplementationType.IsPresent))
         {
-            jsonConverters.Add(new AbstractJsonConverter(definitionField.IsEmbedded ? definitionField.EmbeddedType : definitionField.GroupType,
-                definitionField.ImplementationType));
+            jsonConverters.Add(new AbstractJsonConverter(
+                definitionField.EmbeddedType.IsPresent
+                    ? definitionField.EmbeddedType.Value
+                    : definitionField.GroupType.Value,
+                definitionField.ImplementationType.Value));
         }
 
-        JsonSerializerSettings = new JsonSerializerSettings();
-        JsonSerializerSettings.Converters = jsonConverters;
-        JsonSerializerSettings.Formatting = Formatting.Indented;
+        JsonSerializerSettings = new JsonSerializerSettings
+        {
+            Converters = jsonConverters,
+            Formatting = Formatting.Indented
+        };
         return JsonConvert.SerializeObject(Mocks, JsonSerializerSettings);
     }
 }

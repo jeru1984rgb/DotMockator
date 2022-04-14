@@ -21,9 +21,9 @@ public class AbstractJsonConverter
         return result;
     }
 
-    public override Object ReadJson(JsonReader reader, Type type, Object value, JsonSerializer jser)
+    public override Object? ReadJson(JsonReader reader, Type type, Object? value, JsonSerializer jser)
         => jser.Deserialize(reader, RealType);
 
-    public override void WriteJson(JsonWriter writer, Object value, JsonSerializer jser)
+    public override void WriteJson(JsonWriter writer, Object? value, JsonSerializer jser)
         => jser.Serialize(writer, value, RealType);
 }

@@ -1,15 +1,15 @@
-namespace dotmockator.core.definitions;
+namespace dotmockator.core.definitions.attributes;
 
 [AttributeUsage(AttributeTargets.Property)]
 public class MockatorGroupAttribute : Attribute
 {
-    private int Min { get; }
-    private int Max { get; }
+    public int Min { get; }
+    public int Max { get; }
     
-    public MockatorGroupAttribute(int max, int min)
+    public MockatorGroupAttribute(int min, int max)
     {
-        Max = max;
         Min = min;
+        Max = max;
     }
 
 }

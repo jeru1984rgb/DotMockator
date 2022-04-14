@@ -1,26 +1,28 @@
-using dotmockator.core.definitions;
+using dotmockator.core.definitions.field;
 
 namespace dotmockator.core.generator.strategies;
 
-public class EmbeddedStrategy
+public static class EmbeddedStrategy
 {
     public static void HandleEmbedded<T>(T candidate, DefinitionField definitionField)
     {
-        if (!definitionField.IsEmbedded && !definitionField.IsDefinitionReuse)
+        if (!definitionField.EmbeddedType.IsPresent || definitionField.GroupType.IsPresent)
             return;
 
-        
-        if (definitionField.IsDefinitionReuse)
+        if (definitionField.ReuseDefinition.IsPresent)
         {
-            definitionField.PropertyInfo.SetValue(candidate, MockatorGenerator.GenerateSingle<T>(definitionField.ReuseDefinition));
+            definitionField.PropertyInfo.Value.SetValue(candidate,
+                MockatorGenerator.GenerateSingle(definitionField.ReuseDefinition.Value));
         }
-        else if (definitionField.EmbeddedType.IsInterface)
+        else if (definitionField.ImplementationType.IsPresent)
         {
-            definitionField.PropertyInfo.SetValue(candidate, MockatorGenerator.GenerateSingle(definitionField.ImplementationType));
+            definitionField.PropertyInfo.Value.SetValue(candidate,
+                MockatorGenerator.GenerateSingle(definitionField.ImplementationType.Value));
         }
-        else
+        else if (definitionField.EmbeddedType.IsPresent)
         {
-            definitionField.PropertyInfo.SetValue(candidate, MockatorGenerator.GenerateSingle(definitionField.EmbeddedType));
+            definitionField.PropertyInfo.Value.SetValue(candidate,
+                MockatorGenerator.GenerateSingle(definitionField.EmbeddedType.Value));
         }
     }
 }

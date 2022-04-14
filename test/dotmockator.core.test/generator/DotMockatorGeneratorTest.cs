@@ -15,9 +15,9 @@ public class DotMockatorGeneratorTest
     public static IEnumerable<object[]> GetPersonMocks()
         => new[]
         {
-            new object[]
+            new []
             {
-                MockatorGenerator.GenerateSingle<PersonMockDefinitionWithBuilder>(PersonMockDefinitionWithBuilder
+                MockatorGenerator.GenerateSingle(PersonMockDefinitionWithBuilder
                     .GetBuilder())
             },
             new object[] {MockatorGenerator.GenerateSingle<PersonMockDefinitionWithAttribute>()}
@@ -26,7 +26,7 @@ public class DotMockatorGeneratorTest
     public static IEnumerable<object[]> GetPersonMockObservable()
         => new[]
         {
-            new[]
+            new object[]
             {
                 MockatorGenerator.GenerateObservable<PersonMockDefinitionWithBuilder>(10,
                     PersonMockDefinitionWithBuilder.GetBuilder())
@@ -37,9 +37,9 @@ public class DotMockatorGeneratorTest
     public static IEnumerable<object[]> GetAddressMocks()
         => new[]
         {
-            new object[]
+            new []
             {
-                MockatorGenerator.GenerateSingle<AddressMockDefinitionWithBuilder>(AddressMockDefinitionWithBuilder
+                MockatorGenerator.GenerateSingle(AddressMockDefinitionWithBuilder
                     .GetBuilder())
             },
             new object[] {MockatorGenerator.GenerateSingle<AddressMockDefinitionWithAttribute>()}
@@ -52,7 +52,7 @@ public class DotMockatorGeneratorTest
             {
                 MockatorGenerator.GenerateObservable<AddressMockDefinitionWithAttribute>(10)
             },
-            new[]
+            new object[]
             {
                 MockatorGenerator.GenerateObservable<AddressMockDefinitionWithBuilder>(10,
                     AddressMockDefinitionWithBuilder.GetBuilder())
@@ -62,9 +62,9 @@ public class DotMockatorGeneratorTest
     public static IEnumerable<object[]> GetComplexMocks()
         => new[]
         {
-            new object[]
+            new []
             {
-                MockatorGenerator.GenerateSingle<ComplexMockDefinitionWithBuilder>(ComplexMockDefinitionWithBuilder
+                MockatorGenerator.GenerateSingle(ComplexMockDefinitionWithBuilder
                     .GetBuilder())
             },
             new object[]
@@ -73,19 +73,19 @@ public class DotMockatorGeneratorTest
             }
         };
 
-    void AssertPersonMock(IPersonMockDefinition personMockDefinitionWithAttributes)
+    void AssertPersonMock(IPersonMockDefinition personMock)
     {
-        personMockDefinitionWithAttributes.FirstName.Should().NotBeNull().And.NotBeEmpty();
-        personMockDefinitionWithAttributes.LastName.Should().NotBeNull().And.NotBeEmpty();
-        personMockDefinitionWithAttributes.Slogan.Should().NotBeNull().And.NotBeEmpty();
-        personMockDefinitionWithAttributes.PersonalDescription.Should().NotBeNull().And.NotBeEmpty();
-        personMockDefinitionWithAttributes.DynamicResolvedGuid.Should().Be(GuidResolver.TestGuid);
+        personMock.FirstName.Should().NotBeNull().And.NotBeEmpty();
+        personMock.LastName.Should().NotBeNull().And.NotBeEmpty();
+        personMock.Slogan.Should().NotBeNull().And.NotBeEmpty();
+        personMock.PersonalDescription.Should().NotBeNull().And.NotBeEmpty();
+        personMock.DynamicResolvedGuid.Should().Be(GuidResolver.TestGuid);
     }
 
-    private void AssertAddressMock(IAddressMockDefinition addressMockDefinitionWithAttribute)
+    private void AssertAddressMock(IAddressMockDefinition addressMock)
     {
-        addressMockDefinitionWithAttribute.City.Should().NotBeNull().And.NotBeEmpty();
-        addressMockDefinitionWithAttribute.Street.Should().NotBeNull().And.NotBeEmpty();
+        addressMock.City.Should().NotBeNull().And.NotBeEmpty();
+        addressMock.Street.Should().NotBeNull().And.NotBeEmpty();
     }
 
 
@@ -136,9 +136,9 @@ public class DotMockatorGeneratorTest
     [MemberData(nameof(GetComplexMocks))]
     public void GenerateSingle_ComplexMockDefinition(IComplexMockDefinition candidate)
     {
-        AssertPersonMock(candidate.Person);
+        AssertPersonMock(candidate.Person!);
         candidate.Addresses.Should().NotBeNull().And.NotBeEmpty();
-        candidate.Addresses.Count().Should().BeGreaterThan(0);
-        candidate.Addresses.ForEach(AssertAddressMock);
+        candidate.Addresses!.Count().Should().BeGreaterThan(0);
+        candidate.Addresses!.ForEach(AssertAddressMock);
     }
 }

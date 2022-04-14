@@ -1,5 +1,5 @@
 using Bogus.DataSets;
-using dotmockator.core.definitions;
+using dotmockator.core.definitions.field;
 
 namespace dotmockator.core.generator.date;
 
@@ -7,27 +7,31 @@ public partial class DateGenerator
 {
     public class Past : FieldGenerator
     {
-        public Past() : base((def) =>
+        public Past() : base(def =>
         {
-            var config = def.GetGeneratorConfig<PastConfig>();
-            if (config == null)
-            {
-                config = new PastConfig(50);
-            }
-
+            var config = def.GetConfiguration<PastConfig>();
             return new Date().Past(config.YearsToGoBack);
         })
         {
         }
     }
 
-    public class PastConfig : MockatorGeneratorConfigAttribute, IConfiguration
+    public class PastConfig : MockatorAttributeConfiguration
     {
-        public int YearsToGoBack { get; }
+        public PastConfig()
+        {
+        }
+
+        public int YearsToGoBack { get; private set; }
 
         public PastConfig(int yearsToGoBack)
         {
             YearsToGoBack = yearsToGoBack;
+        }
+
+        public override void DefaultConfiguration()
+        {
+            YearsToGoBack = 10;
         }
     }
 }

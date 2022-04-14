@@ -9,13 +9,13 @@ namespace dotmockator.core.test.testdata.person;
 
 public class PersonMockDefinitionWithBuilder : IPersonMockDefinition
 {
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
-    public DateTime BirthDate { get; set; }
-    public string Slogan { get; set; }
-    public string PersonalDescription { get; set; }
-    public Guid DynamicResolvedGuid { get; set; }
-    public string DynamicResolvedString { get; set; }
+    public string? FirstName { get; set; }
+    public string? LastName { get; set; } 
+    public DateTime? BirthDate { get; set; }
+    public string? Slogan { get; set; }
+    public string? PersonalDescription { get; set; }
+    public Guid? DynamicResolvedGuid { get; set; }
+    public string? DynamicResolvedString { get; set; }
 
     public static Definition GetBuilder()
     {
@@ -28,10 +28,8 @@ public class PersonMockDefinitionWithBuilder : IPersonMockDefinition
                     .WithConfiguration(new DateGenerator.PastConfig(50)))
             .HavingField(nameof(Slogan), _ => _.WithGenerator(typeof(LoremGenerator.Sentence)))
             .HavingField(nameof(PersonalDescription), _ => _.WithGenerator(typeof(LoremGenerator.Paragraph)))
-            //.HavingField(nameof(DynamicResolvedGuid), _ => _.WithResolver(typeof(GuidResolver)))
-            .HavingField(nameof(DynamicResolvedGuid), _ => _.WithStatic(() => GuidResolver.TestGuid))
-            //.HavingField(nameof(DynamicResolvedString), _ => _.WithResolver(typeof(StringResolver)))
-            .HavingField(nameof(DynamicResolvedString), _ => _.WithStatic(() => StringResolver.TestString))
+            .HavingField(nameof(DynamicResolvedGuid), _ => _.WithResolver(typeof(GuidResolver)))
+            .HavingField(nameof(DynamicResolvedString), _ => _.WithResolver(typeof(StringResolver)))
             .Build();
     }
 }
