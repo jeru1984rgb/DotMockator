@@ -7,6 +7,11 @@
     &lt;/TestAncestor&gt;
   &lt;/Or&gt;
 &lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=542fc7f3_002D0ee9_002D4066_002D970d_002D0f005e56e3a2/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="CanProduce" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::A08D3D0B-9847-44EF-A23C-7AFAFAB46453::net6.0::DotMockator.Transport.Kafka.Test.Producer.DotMockatorKafkaProducerTest.CanProduce&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=fc7b7352_002D1e97_002D478b_002D8a57_002D454d31c130ff/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="DefinitionExtractor_SimpleDefinition_GotAllDefinitions" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;Solution /&gt;
 &lt;/SessionState&gt;</s:String>

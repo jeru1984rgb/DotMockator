@@ -12,6 +12,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotmockator.transport.file"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotmockator.transport.file.test", "test\dotmockator.transport.file.test\dotmockator.transport.file.test.csproj", "{8B3CDB8A-61B1-49A1-911C-826887DB6103}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotmockator.transport.kafka", "src\dotmockator.transport.kafka\dotmockator.transport.kafka.csproj", "{584A896B-4EDF-45B8-9925-582713D54B37}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotmockator.transport.kafka.test", "test\dotmockator.transport.kafka.test\dotmockator.transport.kafka.test.csproj", "{A08D3D0B-9847-44EF-A23C-7AFAFAB46453}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,11 +36,21 @@ Global
 		{8B3CDB8A-61B1-49A1-911C-826887DB6103}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F3EA155D-F08B-4E2E-90CD-5A3618B86730}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F3EA155D-F08B-4E2E-90CD-5A3618B86730}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{584A896B-4EDF-45B8-9925-582713D54B37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{584A896B-4EDF-45B8-9925-582713D54B37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{584A896B-4EDF-45B8-9925-582713D54B37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{584A896B-4EDF-45B8-9925-582713D54B37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A08D3D0B-9847-44EF-A23C-7AFAFAB46453}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A08D3D0B-9847-44EF-A23C-7AFAFAB46453}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A08D3D0B-9847-44EF-A23C-7AFAFAB46453}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A08D3D0B-9847-44EF-A23C-7AFAFAB46453}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{06A28026-0236-4D4E-A827-611167622A42} = {B566D9F7-FD68-44A0-9955-D16BF165DFD9}
 		{F91B8F9D-B159-47AE-9E00-A285444F6FAD} = {7A10F705-E92F-4EC7-898D-8150F3C37ED3}
 		{8B3CDB8A-61B1-49A1-911C-826887DB6103} = {B566D9F7-FD68-44A0-9955-D16BF165DFD9}
 		{F3EA155D-F08B-4E2E-90CD-5A3618B86730} = {7A10F705-E92F-4EC7-898D-8150F3C37ED3}
+		{584A896B-4EDF-45B8-9925-582713D54B37} = {7A10F705-E92F-4EC7-898D-8150F3C37ED3}
+		{A08D3D0B-9847-44EF-A23C-7AFAFAB46453} = {B566D9F7-FD68-44A0-9955-D16BF165DFD9}
 	EndGlobalSection
 EndGlobal
